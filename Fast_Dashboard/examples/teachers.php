@@ -27,7 +27,7 @@ $selectTeacher = "select * from teachers"
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Paper Dashboard 2 by Creative Tim
+       
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
@@ -105,7 +105,10 @@ $selectTeacher = "select * from teachers"
 
           if($result = mysqli_query($link, $selectTeacher)){
             if(mysqli_num_rows($result) > 0){
-              echo '
+
+                ?>
+
+           
               
               <table class="table">
               <thead class=" text-primary">
@@ -126,24 +129,21 @@ $selectTeacher = "select * from teachers"
               </thead>
               <tbody>
               
-              ';
-        while($row = mysqli_fetch_array($result)){
+             
+      <?php  while($row = mysqli_fetch_array($result)){ ?>
          
-        echo '
-
-
             <tr>
                 <td>
-                '. $row["t_name"] .'
+                 <?=$row['t_name']?>
                 </td>
                 <td>
-                '. $row["t_email"] .'
+                <?=$row['t_email']?>
                 </td>
                 <td>
-                '. $row["t_dept"] .'
+                <?=$row['t_dept']?>
                 </td>
                 <td>
-                '. $row["create_on"] .'
+                <?=$row['create_on']?>
                 </td>
               
                 <td>
@@ -155,18 +155,18 @@ $selectTeacher = "select * from teachers"
           
 
 
-
-
-        ';
-        }
-        echo '</tbody>
-        </table>';
+        <?php
       }
-      else{
-        echo "No records matching your query were found.";
     }
-    }
-    ?>
+    else{
+     echo "No records matching your query were found.";
+}
+}
+?>
+        
+        </tbody>
+        </table>
+    
                                
 
                             </div>
@@ -310,7 +310,7 @@ if(isset($_POST['submit'])){
   $name = $_POST['t_name'];
   $dept = $_POST['dept'];
   $email = $_POST['email'];
-  $pwd = $_POST['password1'];
+  $pwd = md5($_POST['password1']);
   $img = 'mahad';
 
   $select = "select d_id from departments where d_name ='".$dept."'";
@@ -320,10 +320,13 @@ if(isset($_POST['submit'])){
        
         while($row = mysqli_fetch_assoc($result)){
          $sql = 'INSERT INTO teachers (t_name,t_dept,t_email,pwd,create_by,d_id,img)
-                 VALUES ("'.$name.'","'.$dept.'","'.$email.'","'.$pwd.'","'.$row['d_id'].'","'.$row['d_id'].'","'.$img.'")';
+                 VALUES ("'.$name.'","'.$dept.'","'.$email.'","'.$pwd.'","'.$row['d_id'].'",1,"'.$img.'")';
+
+            $sql2 = 'INSERT INTO tbl_users (user_role_id,user_name,email,password)
+            VALUES (2,"'.$name.'","'.$email.'","'.$pwd.'")';
         }
        
-  if(mysqli_query($link, $sql)){
+  if(mysqli_query($link, $sql) && mysqli_query($link, $sql2)){
       echo "insertd";
       $name = '';
       $dept = '';
@@ -343,19 +346,6 @@ if(isset($_POST['submit'])){
 
   mysqli_close($link);
 }
-
-
-
-// Close connection
-
-// if(mysqli_query($link, $select)){
-//     echo $select;
-// } else{
-//     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-// }
- 
-
-
 
 
 ?>

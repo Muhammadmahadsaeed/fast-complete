@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2019 at 04:13 PM
+-- Generation Time: Dec 04, 2019 at 12:33 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -38,14 +38,11 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`d_id`, `d_name`) VALUES
-(1, 'cs'),
-(2, 'civil'),
-(3, 'Electronices'),
-(4, 'Electronices'),
-(5, 'bio medical'),
-(6, 'comp'),
-(7, 'comp'),
-(8, 'comp');
+(1, 'CS'),
+(2, 'Electronices'),
+(3, 'bio medical'),
+(4, 'se'),
+(5, 'civil');
 
 -- --------------------------------------------------------
 
@@ -87,22 +84,7 @@ CREATE TABLE `proposals` (
 --
 
 INSERT INTO `proposals` (`p_id`, `leader_name`, `g_mem1_name`, `g_mem2_name`, `batch`, `dept`, `teacher`, `optional_teacher`, `project_tittle`, `project_description`, `l_rollno`, `g_mem1_rollno`, `g_mem2_rollno`, `email`, `mem1_email`, `mem2_email`, `img`, `status`, `create_on`, `create_by`, `rejected_on`, `rejected_by`, `is_active`, `t_id`, `op_t_id`, `is_check`) VALUES
-(1, 'mahad', 'saad', 'rameez', '2016', 'SE', 'sir haider', NULL, 'LMS', 'this is description', '70', '73', '83', '', '', '', 'img', 'rejected', '2019-11-28 20:53:14', NULL, '2019-11-28 20:53:14', NULL, 0, NULL, NULL, NULL),
-(2, 'hammad', 'sami', 'haq', '2017', 'CS', 'sir misbah', NULL, 'OLMS', 'this is OLMS', '59', '58', '69', '', '', '', 'image', 'approved', '2019-11-28 20:53:14', NULL, '2019-11-28 20:53:14', NULL, 0, NULL, NULL, NULL),
-(3, '', '', '', '', 'cs', 'haris', NULL, '', '', '', '', '', '', '', '', '', 'request', '2019-11-29 19:39:18', 3, '2019-11-29 19:39:18', NULL, 0, 0, NULL, NULL),
-(4, '', '', '', '', 'cs', 'haris', NULL, '', '', '', '', '', '', '', '', '', 'request', '2019-11-29 19:43:44', 3, '2019-11-29 19:43:44', NULL, 0, 0, NULL, NULL),
-(5, 'mahad', 'saad', 'ha', '', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '60', '71', '72', '', '', '', 'backblue.gif', 'request', '2019-11-29 19:44:31', 3, '2019-11-29 19:44:31', NULL, 0, 0, NULL, NULL),
-(6, 'mahad', 'saad', 'ha', '', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '70', '71', '72', '', '', '', 'backblue.gif', 'approved', '2019-11-29 19:44:57', 3, '2019-11-29 19:44:57', NULL, 0, 0, NULL, NULL),
-(7, 'mahad', 'saad', 'ha', '', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '69', '71', '72', '', '', '', 'backblue.gif', 'reject', '2019-11-29 19:45:41', 3, '2019-11-29 19:45:41', NULL, 0, 0, NULL, NULL),
-(8, 'mahad', 'saad', 'ha', '', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '70', '71', '72', '', '', '', 'backblue.gif', 'approved', '2019-11-29 19:46:59', 3, '2019-11-29 19:46:59', NULL, 0, 0, NULL, NULL),
-(9, 'mahad', 'saad', 'ha', '', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '51', '71', '72', '', '', '', 'backblue.gif', 'request', '2019-11-29 19:54:54', 3, '2019-11-29 19:54:54', NULL, 0, 3, NULL, NULL),
-(10, 'mahad', 'saad', 'ha', '19', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '70', '71', '72', '', '', '', 'backblue.gif', 'rejected', '2019-11-29 19:56:06', 3, '2019-11-29 19:56:06', NULL, 0, 3, NULL, NULL),
-(11, 'mahad', 'saad', 'ha', '19191919', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '70', '71', '72', '', '', '', 'backblue.gif', 'approved', '2019-11-29 19:56:28', 3, '2019-11-29 19:56:28', NULL, 0, 3, NULL, NULL),
-(12, 'mahad', 'saad', 'ha', '2019', 'cs', 'haris', NULL, 'LMSSSSS', 'this is des', '70', '71', '72', '', '', '', 'backblue.gif', 'rejected', '2019-11-29 19:57:07', 3, '2019-11-29 19:57:07', NULL, 0, 3, NULL, NULL),
-(13, 'khan', 'hunain', 'adil', 'civil', 'haq', 'LMSSSSS', NULL, 'this is khan project description', '40', '89', '81', '', '2019', '', '', 'backblue.gif', 'approved', '2019-11-30 15:24:27', 3, '2019-11-30 15:24:27', NULL, 0, 5, NULL, NULL),
-(14, 'rameez', 'touqeer', 'shoaib', '2019', 'cs', 'haris', NULL, 'LMSSSSS', 'this is project description', '85', '87', '65', '', '', '', 'fade.gif', 'request', '2019-11-30 15:29:04', 3, '2019-11-30 15:29:04', NULL, 0, 3, NULL, NULL),
-(15, 'mahad', 'saad', 'adil', '2019', 'cs', 'saad', NULL, 'LMSSSSS', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi aspernatur vitae placeat, iusto voluptates dolore, ipsam excepturi dicta autem sed deleniti obcaecati debitis fugit reiciendis molestiae earum, quam laboriosam hic!\r\n', '34', '36', '38', 'mahadkhan809@gmail.com', '', '', 'fade.gif', 'rejected', '2019-11-30 15:30:54', 3, '2019-11-30 15:30:54', NULL, 0, 1, NULL, 1),
-(16, 'rameez', 'qureshi', 'jawad', '2019', 'cs', 'saad', 'haris', 'LMSSSSS', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled ', '1', '2', '3', 'rmz@gmail.com', 'q@gmail.com', 'j@gmail.com', 'fade.gif', 'request', '2019-12-02 17:36:23', 3, '2019-12-02 17:36:23', NULL, 0, 1, 3, 0);
+(1, 'touqeer', 'shahid', 'ishaque', '2019', 'se', 'saad', 'haq', 'Online institution guideline', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', '59', '20', '25', 'touqeer@gmail.com', 'shahid@gmail.com', 'ishaque@gmail.com', 'fade.gif', 'request', '2019-12-04 14:52:03', 3, '2019-12-04 14:52:03', NULL, 0, 4, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -127,18 +109,10 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`std_id`, `std_role_id`, `std_name`, `std_rollno`, `pwd`, `dept`, `batch`, `created_on`, `created_by`) VALUES
-(1, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:05', 1),
-(2, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:38', 1),
-(3, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:40', 1),
-(4, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:41', 1),
-(5, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:41', 1),
-(6, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:48:42', 1),
-(7, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:51:41', 1),
-(8, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:54:09', 1),
-(9, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:54:11', 1),
-(10, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:57:38', 1),
-(11, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:58:45', 1),
-(12, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048', 'cs', '2017', '2019-12-02 19:59:33', 1);
+(1, 3, 'rameez', 'nu-83', 'e10adc3949ba59abbe56e057f20f883e', 'CS', '2016', '2019-12-04 13:49:36', 1),
+(2, 3, 'touqeer', 'nu-59', 'e10adc3949ba59abbe56e057f20f883e', 'se', '2017', '2019-12-04 14:17:58', 1),
+(3, 3, 'abbas', '69', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:47:50', 1),
+(4, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:48:15', 1);
 
 -- --------------------------------------------------------
 
@@ -159,10 +133,15 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `user_role_id`, `user_name`, `email`, `password`) VALUES
-(1, 1, 'Abbas', 'haider@example.com', '0192023a7bbd73250516f069df18b500'),
-(2, 2, 'zameer', 'ahsan@example.com', '3d68b18bd9042ad3dc79643bde1ff351'),
-(3, 3, 'khan', 'sarah@example.com', 'ec26202651ed221cf8f993668c459d46'),
-(5, 3, 'ab haq', '200', '5ec58a99d35c960efccea3d29639b048');
+(1, 2, 'mahad', 'mhd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(2, 1, 'haider', 'haider@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(3, 2, 'rmz', 'rmz@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(4, 2, 'haq', 'haq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(5, 2, 'saad', 'saad@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(6, 3, 'touqeer', 'nu-59', 'e10adc3949ba59abbe56e057f20f883e'),
+(7, 2, 'adil', 'adil@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(8, 3, 'abbas', 'nu-69', 'e10adc3949ba59abbe56e057f20f883e'),
+(9, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -209,13 +188,11 @@ CREATE TABLE `teachers` (
 --
 
 INSERT INTO `teachers` (`t_id`, `t_name`, `t_dept`, `t_email`, `pwd`, `is_active`, `create_on`, `create_by`, `d_id`, `img`) VALUES
-(1, 'saad', 'cs', 'haider@example.com', '1234567', NULL, '2019-11-28 19:59:50', 1, 1, 'mahad'),
-(2, 'mahad', 'cs', 'haider@example.com', '1234567', NULL, '2019-11-28 19:59:55', 1, 1, 'mahad'),
-(3, 'haris', 'cs', 'haider@example.com', '1234567', NULL, '2019-11-28 20:09:41', 1, 1, 'mahad'),
-(4, 'mahad', 'cs', 'haider@example.com', '1234567', NULL, '2019-11-28 20:09:44', 1, 1, 'mahad'),
-(5, 'haq', 'civil', 'sarah@example.com', '123456', NULL, '2019-11-28 20:18:29', 2, 2, 'mahad'),
-(6, 'haq', 'civil', 'sarah@example.com', '123456', NULL, '2019-11-28 20:18:32', 2, 2, 'mahad'),
-(7, 'haq', 'civil', 'sarah@example.com', '123456', NULL, '2019-11-28 20:18:36', 2, 2, 'mahad');
+(1, 'mahad', 'CS', 'mhd@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2019-12-04 14:13:40', 1, 1, 'mahad'),
+(2, 'rmz', 'CS', 'rmz@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2019-12-04 14:14:51', 1, 1, 'mahad'),
+(3, 'haq', 'se', 'haq@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2019-12-04 14:16:46', 4, 4, 'mahad'),
+(4, 'saad', 'se', 'saad@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2019-12-04 14:17:16', 4, 4, 'mahad'),
+(5, 'adil', 'se', 'adil@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, '2019-12-04 14:34:56', 4, 4, 'mahad');
 
 --
 -- Indexes for dumped tables
@@ -255,8 +232,7 @@ ALTER TABLE `tbl_user_role`
 -- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
-  ADD PRIMARY KEY (`t_id`),
-  ADD KEY `dept_id` (`d_id`);
+  ADD PRIMARY KEY (`t_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -266,25 +242,25 @@ ALTER TABLE `teachers`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `proposals`
 --
 ALTER TABLE `proposals`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_role`
@@ -296,17 +272,7 @@ ALTER TABLE `tbl_user_role`
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `teachers`
---
-ALTER TABLE `teachers`
-  ADD CONSTRAINT `dept_id` FOREIGN KEY (`d_id`) REFERENCES `departments` (`d_id`);
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

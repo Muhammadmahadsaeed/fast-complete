@@ -33,7 +33,7 @@ $idd=$_SESSION['user_role_id'];
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+   
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -158,9 +158,9 @@ $idd=$_SESSION['user_role_id'];
                             <?php
 		if($idd !=3){
             ?>
-                            <form action="./generate_pdf.php" method="post">
+                            <form action="" method="post">
                      
-                            <input type="submit" value="View All" name="submit_val" class="btn btn-primary pull-right" />
+                            <input type="button" value="Print All" name="submit_val" onclick="generatePdf()" class="btn btn-primary pull-right" />
                             </form>
                             <?php }; ?>
                             </div>
@@ -339,5 +339,17 @@ $idd=$_SESSION['user_role_id'];
     window.location = `./ProposalDetail.php?id=${e.id}`;
   }
 
+
+  function generatePdf(){
+   
+    var e = document.getElementById("filter");
+    let batch = e.options[e.selectedIndex].text;
+     
+     console.log("pdf",batch)
+  
+
+   
+    window.location = `./generate_pdf.php?batchId=${batch}`
+  }
  
 </script>

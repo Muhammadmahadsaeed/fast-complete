@@ -3,11 +3,10 @@ namespace Dompdf;
 require_once './dompdf/autoload.inc.php';
 require_once('./connection.php');
 
+$batchId = $_GET['batchId'];
 
-if(isset($_POST['submit_val']))
-{
 $dompdf = new Dompdf(); 
-$approve = "SELECT * FROM proposals";
+$approve = "SELECT * FROM proposals where batch = '".$batchId."'";
 
 if($result = mysqli_query($link, $approve)){
     if(mysqli_num_rows($result) > 0){
@@ -73,16 +72,41 @@ $dompdf->stream("",array("Attachment" => false));
     
 
 }
-}
+else{
+   
+       
+        $output1 = "<html>";
+      
+            
+            $output1 = '<body >
+            <div style="z-index: -1000;position:fixed;margin:30%; text-align:center;opacity:0.25">
+                <img src="./img/NU_Logo.png" height="300px" width="400px"/>
+            </div>
+            <div style="text-align:center;text-transform:uppercase;margin-top:30%">
+                <h4 style="font-size:2em">There is no proposals</h4>
+            </div>
+                <br/>
+         
+               
+           
+            </body>';
+               
+           
+        }
+        $output1 .= '</html>';
+$dompdf->loadHtml($output1);
+
+
+$dompdf->setPaper('A4', 'potraite');
+$dompdf->render();
+$dompdf->stream("",array("Attachment" => false));
+
+    
+
 
 }
+
+
 
 ?>
 
-
-<!-- <span style="font-size:1em;text-transform:uppercase;text-align:left">' .$row["leader_name"]. '</span>
-                    <span style="font-size:1em;padding-left:1%;text-align:right">(' .$row["email"]. ')</span><br>
-                    <span style="font-size:1em;text-transform:uppercase;text-align:left">' .$row["g_mem1_name"]. '</span>
-                    <span style="font-size:1em;padding-left:1%;text-align:right">(' .$row["email"]. ')</span><br>
-                    <span style="font-size:1em;text-transform:uppercase;text-align:left">' .$row["g_mem2_name"]. '</span>
-                    <span style="font-size:1em;padding-left:1%;text-align:right">(' .$row["email"]. ')</span> -->
