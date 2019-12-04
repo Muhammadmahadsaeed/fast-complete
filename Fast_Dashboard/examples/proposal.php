@@ -16,7 +16,7 @@ The above copyright notice and this permission notice shall be included in all c
 require_once('./connection.php');
 
 $idd=$_SESSION['user_role_id'];
-
+$maill=$_SESSION['email'];
 // $sql = "SELECT * FROM proposals where STATUS  = 'request'";
 // $approve = "SELECT * FROM proposals where STATUS  = 'approved'";
 // $reject = "SELECT * FROM proposals where STATUS  = 'rejected'";
@@ -131,11 +131,9 @@ $idd=$_SESSION['user_role_id'];
                       <div class="col-md-12">
                         <nav>
                           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                          <?php
-		if($idd !=3){
-            ?>
+                         
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All Proposals</a>
-                            <?php }; ?>
+                           
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Approved</a>
                             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Rejected</a>
 
@@ -223,7 +221,7 @@ $idd=$_SESSION['user_role_id'];
   $(document).ready(function() {
 
     function create_list(data) {
-      console.log(data)
+      // console.log(data)
 
       var table = $('#table-approved');
       var table2 = $('#table-rejected');
@@ -263,9 +261,9 @@ $idd=$_SESSION['user_role_id'];
       table3.append(table_head3)
 
       for (var x in data) {
-        console.log(data[x]);
-        if ((data[x].status == 'approved') || (data[x].status == 'rejected')) {
-
+     
+        if ((data[x].status == 'approved') || (data[x].status == 'rejected')|| (data[x].status == 'request')) {
+          console.log(data[x])
           var html = '<tr>';
      html += '<td>'+data[x].leader+'</td>';
      html += '<td>'+data[x].lroll+'</td>';
@@ -275,7 +273,7 @@ $idd=$_SESSION['user_role_id'];
      html += '<td>'+data[x].status+'</td>';
      html += '<td> <a href="proposaldetail.php?id='+data[x].id+'" class="btn btn-light">View</a></td></tr>';
           table3.append(html);
-
+console.log(data[x])
           if (data[x].status == 'rejected') {
             var html = '<tr>';
      html += '<td>'+data[x].leader+'</td>';
@@ -286,6 +284,7 @@ $idd=$_SESSION['user_role_id'];
      html += '<td>'+data[x].status+'</td>';
      html += '<td> <a href="proposaldetail.php?id='+data[x].id+'" class="btn btn-light">View</a></td></tr>';
             table2.append(html);
+            console.log(data[x])
           }
           if (data[x].status == 'approved') {
 
@@ -312,7 +311,7 @@ $idd=$_SESSION['user_role_id'];
       type: 'GET',
       success: function(data) {
         var d = JSON.parse(data);
-        // console.log(d)
+         console.log(d)
         create_list(d);
 
       }
@@ -325,7 +324,7 @@ $idd=$_SESSION['user_role_id'];
         type: 'GET',
         success: function(data) {
           var d = JSON.parse(data);
-          //console.log(d)
+          console.log(d)
           create_list(d);
         }
       })
