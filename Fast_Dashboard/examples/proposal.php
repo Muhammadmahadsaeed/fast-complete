@@ -264,7 +264,7 @@ $idd=$_SESSION['user_role_id'];
 
       for (var x in data) {
         console.log(data[x]);
-        if ((data[x].status == 'approved') || (data[x].status == 'rejected')) {
+        if ((data[x].status == 'approved') || (data[x].status == 'rejected') || (data[x].status == 'request')) {
 
           var html = '<tr>';
      html += '<td>'+data[x].leader+'</td>';

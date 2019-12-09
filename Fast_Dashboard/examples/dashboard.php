@@ -1,22 +1,10 @@
-<!--
-=========================================================
- Paper Dashboard 2 - v2.0.0
-=========================================================
-
- Product Page: https://www.creative-tim.com/product/paper-dashboard-2
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
-
- Coded by Creative Tim
-
-=========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
-
 <?php
 
 require_once('../examples/connection.php');
+$selectStudents = "select * from students";
+$selectTeachers = "select * from teachers";
+$selectProposals = "select * from proposals";
+$selectBatchs = "select * from batchs";
 if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
   header('location:../login/login.php?lmsg=true');
   
@@ -99,6 +87,10 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
 </div> -->
             <div class="content">
                 <div class="row">
+               <?php if($result = mysqli_query($link, $selectStudents)){
+                   $rows = mysqli_num_rows($result);
+
+                ?>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
@@ -110,8 +102,9 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
-                                            <p class="card-category">Capacity</p>
-                                            <p class="card-title">150GB
+
+                                            <p class="card-category">Students</p>
+                                            <p class="card-title"><?= $rows ?>
                                                 <p>
                                         </div>
                                     </div>
@@ -120,14 +113,19 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                             <div class="card-footer ">
                                 <hr>
                                 <div class="stats">
-                                    <i class="fa fa-refresh"></i> Update Now
+                                    <i class="fa fa-refresh"></i> 
                                 </div>
                             </div>
                         </div>
                     </div>
+               <?php }?>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
+                            <?php if($result = mysqli_query($link, $selectProposals)){
+                                $rows = mysqli_num_rows($result);
+
+                                ?>
                                 <div class="row">
                                     <div class="col-5 col-md-4">
                                         <div class="icon-big text-center icon-warning">
@@ -136,17 +134,18 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
-                                            <p class="card-category">Revenue</p>
-                                            <p class="card-title">$ 1,345
+                                            <p class="card-category">Proposals</p>
+                                            <p class="card-title"><?= $rows ?>
                                                 <p>
                                         </div>
                                     </div>
                                 </div>
+                            <?php }?>
                             </div>
                             <div class="card-footer ">
                                 <hr>
                                 <div class="stats">
-                                    <i class="fa fa-calendar-o"></i> Last day
+                                    <i class="fa fa-calendar-o"></i> 
                                 </div>
                             </div>
                         </div>
@@ -154,6 +153,10 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
+                            <?php if($result = mysqli_query($link, $selectTeachers)){
+                                $rows = mysqli_num_rows($result);
+
+                                ?>
                                 <div class="row">
                                     <div class="col-5 col-md-4">
                                         <div class="icon-big text-center icon-warning">
@@ -162,12 +165,13 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
-                                            <p class="card-category">Errors</p>
-                                            <p class="card-title">23
+                                            <p class="card-category">Teachers</p>
+                                            <p class="card-title"><?= $rows ?>
                                                 <p>
                                         </div>
                                     </div>
                                 </div>
+                                <?php }?>
                             </div>
                             <div class="card-footer ">
                                 <hr>
@@ -180,6 +184,10 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
+                            <?php if($result = mysqli_query($link, $selectBatchs)){
+                                $rows = mysqli_num_rows($result);
+
+                                ?>
                                 <div class="row">
                                     <div class="col-5 col-md-4">
                                         <div class="icon-big text-center icon-warning">
@@ -188,12 +196,13 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
-                                            <p class="card-category">Followers</p>
-                                            <p class="card-title">+45K
+                                            <p class="card-category">Batch</p>
+                                            <p class="card-title"><?= $rows ?>
                                                 <p>
                                         </div>
                                     </div>
                                 </div>
+                                <?php }?>
                             </div>
                             <div class="card-footer ">
                                 <hr>
