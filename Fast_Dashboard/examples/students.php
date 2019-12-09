@@ -305,12 +305,15 @@ if(isset($_POST['submit'])){
   $rollno = $_POST['rollno'];
   $pwd = $_POST['password1'];
   $userPwd = md5($pwd);
- 
+  $extra='nu';
+  
+  $c = $extra."-".$rollno;
+  
 
   $sql1 = 'INSERT INTO students (std_role_id,std_name,std_rollno,pwd,dept,batch,created_by)
-          VALUES (3,"'.$l_name.'","'.$rollno.'","'.$userPwd.'","'.$dept.'","'.$batch.'",1)';
+          VALUES (3,"'.$l_name.'","'.$c.'","'.$userPwd.'","'.$dept.'","'.$batch.'",1)';
   $sql2 = 'INSERT INTO tbl_users (user_role_id,user_name,email,password)
-           VALUES (3,"'.$l_name.'","'.$rollno.'","'.$userPwd.'")';
+           VALUES (3,"'.$l_name.'","'.$c.'","'.$userPwd.'")';
        
   if((mysqli_query($link, $sql1)) && (mysqli_query($link, $sql2))){
     

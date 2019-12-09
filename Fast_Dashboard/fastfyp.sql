@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2019 at 12:33 PM
+-- Generation Time: Dec 04, 2019 at 04:14 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -84,7 +84,8 @@ CREATE TABLE `proposals` (
 --
 
 INSERT INTO `proposals` (`p_id`, `leader_name`, `g_mem1_name`, `g_mem2_name`, `batch`, `dept`, `teacher`, `optional_teacher`, `project_tittle`, `project_description`, `l_rollno`, `g_mem1_rollno`, `g_mem2_rollno`, `email`, `mem1_email`, `mem2_email`, `img`, `status`, `create_on`, `create_by`, `rejected_on`, `rejected_by`, `is_active`, `t_id`, `op_t_id`, `is_check`) VALUES
-(1, 'touqeer', 'shahid', 'ishaque', '2019', 'se', 'saad', 'haq', 'Online institution guideline', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', '59', '20', '25', 'touqeer@gmail.com', 'shahid@gmail.com', 'ishaque@gmail.com', 'fade.gif', 'request', '2019-12-04 14:52:03', 3, '2019-12-04 14:52:03', NULL, 0, 4, 3, 0);
+(1, 'touqeer', 'shahid', 'ishaque', '2019', 'se', 'saad', 'haq', 'Online institution guideline', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\r\n\r\n', 'nu-59', '20', '25', 'touqeer@gmail.com', 'shahid@gmail.com', 'ishaque@gmail.com', 'fade.gif', 'request', '2019-12-04 14:52:03', 3, '2019-12-04 14:52:03', NULL, 0, 4, 3, 0),
+(2, 'haq', 'jibran', 'ali', '2019', 'se', 'adil', 'saad', 'helo world', 'hello world', 'nu-75', 'nu-64', 'nu-98', 'a@a.com', 'b@b.com', 'c@c.com', '', 'request', '2019-12-04 18:32:08', 3, '2019-12-04 18:32:08', NULL, 0, 5, 4, 0);
 
 -- --------------------------------------------------------
 
@@ -111,8 +112,10 @@ CREATE TABLE `students` (
 INSERT INTO `students` (`std_id`, `std_role_id`, `std_name`, `std_rollno`, `pwd`, `dept`, `batch`, `created_on`, `created_by`) VALUES
 (1, 3, 'rameez', 'nu-83', 'e10adc3949ba59abbe56e057f20f883e', 'CS', '2016', '2019-12-04 13:49:36', 1),
 (2, 3, 'touqeer', 'nu-59', 'e10adc3949ba59abbe56e057f20f883e', 'se', '2017', '2019-12-04 14:17:58', 1),
-(3, 3, 'abbas', '69', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:47:50', 1),
-(4, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:48:15', 1);
+(3, 3, 'abbas', 'nu-69', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:47:50', 1),
+(4, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e', 'civil', '2019', '2019-12-04 14:48:15', 1),
+(5, 3, 'haq', 'nu-75', 'e10adc3949ba59abbe56e057f20f883e', 'se', '2019', '2019-12-04 18:30:08', 1),
+(7, 3, 'shakoor', 'nu-88', 'e10adc3949ba59abbe56e057f20f883e', 'se', '2019', '2019-12-04 19:43:46', 1);
 
 -- --------------------------------------------------------
 
@@ -141,7 +144,9 @@ INSERT INTO `tbl_users` (`id`, `user_role_id`, `user_name`, `email`, `password`)
 (6, 3, 'touqeer', 'nu-59', 'e10adc3949ba59abbe56e057f20f883e'),
 (7, 2, 'adil', 'adil@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
 (8, 3, 'abbas', 'nu-69', 'e10adc3949ba59abbe56e057f20f883e'),
-(9, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e');
+(9, 3, 'noman', 'nu-54', 'e10adc3949ba59abbe56e057f20f883e'),
+(10, 3, 'haq', 'nu-75', 'e10adc3949ba59abbe56e057f20f883e'),
+(12, 3, 'shakoor', 'nu-88', 'e10adc3949ba59abbe56e057f20f883e');
 
 -- --------------------------------------------------------
 
@@ -248,19 +253,19 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `proposals`
 --
 ALTER TABLE `proposals`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `std_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_role`
