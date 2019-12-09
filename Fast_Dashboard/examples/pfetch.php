@@ -36,7 +36,7 @@ $idd=$_SESSION['user_role_id'];
                     else
                     {
                         $stmnt = $con->prepare('select p_id,leader_name,batch,dept,teacher,l_rollno,status from proposals where batch=?');
-                      
+                        $stmnt->bind_param('s',$filter);
                     }
                
             };
