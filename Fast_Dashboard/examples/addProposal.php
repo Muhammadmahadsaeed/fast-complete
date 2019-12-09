@@ -14,7 +14,14 @@
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 
 
-<?php require_once('./connection.php'); ?>
+<?php require_once('./connection.php');
+error_reporting(0);
+$maill = $_SESSION['email'];
+$uname = $_SESSION['user_name'];
+$dep_err = $teach_err = $mem1_err = $mem2_err = $prtitle_err = $mem1r_err = $mem2r_err = $mail_err = $m1mail_err = $m2mail_err = $pdes_err = "";
+   
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +44,11 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
     <script>
+      if(window.history.replaceState){
+        window.history.replaceState(null,null,window.location.href)
+      }
+    
+
         window.onload = function() {
             var c = document.getElementById('platypus')
             c.onchange = function() {
@@ -48,11 +60,14 @@ The above copyright notice and this permission notice shall be included in all c
             }
         }
     </script>
+    
     <style>
         #teacherDropdown1 {
             display: none;
         }
     </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body class="">
@@ -123,7 +138,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Department</label>
 
                                                 <select class="form-control" name="dept" id="ddlFruits">
-                                                    <option value="">Choose Department</option>
+                                                    <option value="cd" name="cd">Choose Department</option>
                                                     <?php
                                                     $sql = mysqli_query($link, "SELECT * FROM departments");
                                                     while ($row = $sql->fetch_assoc()) {
@@ -133,6 +148,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
                                                 </select>
+                                                <span class="help-block" style="color: red;"><?php echo $dep_err;?></span>
                                             </div>
                                         </div>
                                         <div class="col-md-4 pl-1">
@@ -143,7 +159,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
                                                 </select>
-
+                                                <span class="help-block" style="color: red;"><?php echo $teach_err;?></span>
 
                                             </div>
                                         </div>
@@ -165,7 +181,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         </div>
                                         <div class="col-md-4 px-1">
                                             <div class="form-group">
-                                                
+
                                                 <select class="form-control" id="teacherDropdown1" name="Optionalteacher">
 
 
@@ -179,7 +195,7 @@ The above copyright notice and this permission notice shall be included in all c
                                         <div class="col-md-4 pr-1">
                                             <div class="form-group">
                                                 <label>Leader Name</label>
-                                                <input type="text" name="l_name" class="form-control" placeholder="Leader Name">
+                                                <input type="text" class="form-control" disabled="" name="l_name" value="<?php echo $uname; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4 px-1">
@@ -187,19 +203,22 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Member 1</label>
                                                 <input type="text" name="mem1" class="form-control" placeholder="Member 1 Name">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $mem1_err;?></span>
+                                            
                                         </div>
                                         <div class="col-md-4 pl-1">
                                             <div class="form-group">
                                                 <label>Member 2</label>
                                                 <input type="text" name="mem2" class="form-control" placeholder="Member 2 Name">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $mem2_err;?></span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 pr-1">
                                             <div class="form-group">
                                                 <label>Leader Roll No</label>
-                                                <input type="text" name="l_rollno" class="form-control">
+                                                <input type="text" class="form-control" disabled="" name="l_rollno" value="<?php echo $maill; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4 px-1">
@@ -207,12 +226,14 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Member 1 Roll No</label>
                                                 <input type="text" name="mem1_rollno" class="form-control">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $mem1r_err;?></span>
                                         </div>
                                         <div class="col-md-4 pl-1">
                                             <div class="form-group">
                                                 <label>Member 2 Roll No</label>
                                                 <input type="text" name="mem2_rollno" class="form-control">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $mem2r_err;?></span>
                                         </div>
                                     </div>
 
@@ -222,18 +243,21 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Leader Email</label>
                                                 <input type="email" name="email" class="form-control" placeholder="Email Address">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $mail_err;?></span>
                                         </div>
                                         <div class="col-md-4 px-1">
                                             <div class="form-group">
                                                 <label>Member 1 Email</label>
                                                 <input type="email" name="Mem1_Email" class="form-control" placeholder="Email Address">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $m1mail_err;?></span>
                                         </div>
                                         <div class="col-md-4 pl-1">
                                             <div class="form-group">
                                                 <label>Member 2 Email</label>
                                                 <input type="email" name="Mem2_Email" class="form-control" placeholder="Email Address">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $m2mail_err;?></span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -242,6 +266,7 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Project Tittle</label>
                                                 <input type="text" name="project_tittle" class="form-control" placeholder="Write Your Project Tittle">
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $prtitle_err;?></span>
                                         </div>
 
 
@@ -252,15 +277,10 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <label>Project Description</label>
                                                 <textarea class="form-control textarea" name="project_des"></textarea>
                                             </div>
+                                            <span class="help-block" style="color: red;"><?php echo $pdes_err;?></span>
                                         </div>
                                     </div>
-                                    <div class="form-group">
 
-                                        <label for="fileUpload" class="file-upload btn btn-primary btn-block rounded-pill shadow"><i class="fa fa-upload mr-2"></i>Browse for file ...
-                                            <input id="fileUpload" name="img" type="file">
-                                        </label>
-
-                                    </div>
                                     <div class="row">
                                         <div class="update ml-auto mr-auto">
                                             <button type="submit" name="submit" class="btn btn-primary btn-round">
@@ -345,21 +365,19 @@ The above copyright notice and this permission notice shall be included in all c
                 success: function(data) {
                     var d = JSON.parse(data);
                     myFunction(d)
-                    var c=document.getElementById("platypus")
+                    var c = document.getElementById("platypus")
                     if (c.checked == true) {
                         OptionalTeacher(d)
-                } else {
-                   
-                }
-                    
+                    } else {
+
+                    }
+
                 }
             });
 
         })
     })
 </script>
-
-
 
 
 <?php
@@ -380,7 +398,7 @@ if (isset($_POST['submit'])) {
     $Mem1_Email = $_POST['Mem1_Email'];
     $Mem2_Email = $_POST['Mem2_Email'];
     $project_des = $_POST['project_des'];
-    $img = $_POST['img'];
+
     $status = "request";
 
     $sql1 = "select t_id from teachers where t_name = '" . $teacher . "' ";
@@ -396,7 +414,96 @@ if (isset($_POST['submit'])) {
     $result_set = mysqli_query($link, "select * from proposals where l_rollno = '" . $l_rollno . "'");
     $count = mysqli_num_rows($result_set);
     $data = mysqli_fetch_assoc($result_set);
+
     $std = $data['status'];
+    if (empty($dept)) {
+        $dep_err = "Please select deparment name";
+    } else {
+        $dept = $dept;
+    }
+
+    if (empty($teacher)) {
+        $teach_err = "Please select teacher";
+    } else {
+        $teacher = $teacher;
+    }
+    if (empty($mem1)) {
+        $mem1_err = "Please enter memeber name";
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $mem1)) {
+        $mem1_err = "Please enter a valid member name";
+    } else {
+        $mem1 = $mem1;
+    }
+
+
+    if (empty($mem2)) {
+        $mem2_err = "Please enter memeber name";
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $mem2)) {
+        $mem2_err = "Please enter a valid member name";
+    } else {
+        $mem2 = $mem2;
+    }
+
+    if (empty($project_tittle)) {
+        $prtitle_err = "Please enter memeber name";
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $project_tittle)) {
+        $prtitle_err = "Please enter a valid member name";
+    } else {
+        $project_tittle = $project_tittle;
+    }
+
+    if (empty($mem1_rollno)) {
+        $mem1r_err = "Please enter your roll number";
+    } else if (!is_numeric($mem1_rollno)) {
+        $mem1r_err = "Please enter a valid roll number";
+    } else {
+        $mem1_rollno = $mem1_rollno;
+    }
+
+
+    if (empty($mem2_rollno)) {
+        $mem2r_err = "Please enter your roll number";
+    } else if (!is_numeric($mem2_rollno)) {
+        $mem2r_err = "Please enter a valid roll number";
+    } else {
+        $mem2_rollno = $mem2_rollno;
+    }
+
+    if (empty($email)) {
+        $mail_err = "Please enter email";
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $mail_err = "Invalid email format";
+    } else {
+        $email=$email;
+    }
+
+    if (empty($Mem1_Email)) {
+        $m1mail_err = "Please enter email";
+    } else if (!filter_var($Mem1_Email, FILTER_VALIDATE_EMAIL)) {
+        $m1mail_err = "Invalid email format";
+    } else {
+        $Mem1_Email = $Mem1_Email;
+    }
+
+    if (empty($Mem2_Email)) {
+        $m2mail_err = "Please enter email";
+    } else if (!filter_var($Mem2_Email, FILTER_VALIDATE_EMAIL)) {
+        $m2mail_err = "Invalid email format";
+    } else {
+        $Mem2_Email = $Mem2_Email;
+    }
+
+
+    if(empty($project_des)){
+        $pdes_err="enter description";
+    }
+    else {
+        $project_des=$project_des;
+    }
+
+if(empty($dep_err) && empty($teach_err) && empty($mem1_err) && empty($mem2_err) && empty($prtitle_err) && empty($mem1r_err)  && empty($mem2r_err)  && empty($mail_err) && empty($m1mail_err) && empty($m2mail_err) && empty($pdes_err)){
+
+
     if ($count == 0) {
 
 
@@ -420,14 +527,18 @@ if (isset($_POST['submit'])) {
             echo "ERROR: Could not able to execute $insert. " . mysqli_error($link);
         }
     } else {
+
         if ($std == 'request') {
-            echo "request================>";
+            echo '<script>swal("Kindly Wait!", "Your Proposal is Pending!", "success");</script>';
         } else if ($std == 'approved') {
-            echo "approved================>";
+            echo '<script>swal("Good job!", "Your Submission is Approved!", "success");</script>';
         } else {
-            echo "reject================>";
+            echo '<script>swal("Sorry!", "Your Submission is being rejected!", "error");</script>';
         }
-    }
+    }    }
 }
+
+
+
 
 ?>
