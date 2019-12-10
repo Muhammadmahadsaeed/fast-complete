@@ -114,8 +114,8 @@ $maill=$_SESSION['email'];
               
 
                 <select class="btn btn-primary dropdown-toggle mr-4 pull-right"  id="filter" >
-                <option  name="">Batch </option>
-                  <option  value="all" name="">All </option>
+                
+                  <option  value="all" name="">All Batch</option>
                   <option  value="2019">2019</option>
                   <option  value="2018">2018</option>
                   <option  value="2017">2017</option>
@@ -212,6 +212,7 @@ $maill=$_SESSION['email'];
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
@@ -261,15 +262,9 @@ $maill=$_SESSION['email'];
       table3.append(table_head3)
 
       for (var x in data) {
-<<<<<<< HEAD
         console.log(data[x]);
         if ((data[x].status == 'approved') || (data[x].status == 'rejected') || (data[x].status == 'request')) {
 
-=======
-     
-        if ((data[x].status == 'approved') || (data[x].status == 'rejected')|| (data[x].status == 'request')) {
-          console.log(data[x])
->>>>>>> 4ff1cccf7d873f0052e5b1f96aa3e72ba31ef66b
           var html = '<tr>';
      html += '<td>'+data[x].leader+'</td>';
      html += '<td>'+data[x].lroll+'</td>';
@@ -352,9 +347,13 @@ console.log(data[x])
      
      console.log("pdf",batch)
   
-
-   
-    window.location = `./generate_pdf.php?batchId=${batch}`
+    if(batch == "All Batch"){
+      swal("Sorry!", "Invalid Batch Selection!", "error");
+    }
+   else{
+        window.location = `./generate_pdf.php?batchId=${batch}`
+   }
+    
   }
  
 </script>

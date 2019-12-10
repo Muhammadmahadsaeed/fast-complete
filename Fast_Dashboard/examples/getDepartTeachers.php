@@ -13,7 +13,7 @@
             $final = array();
             while($stmnt->fetch()){
                 $each = array(
-                    'depart'=>$t_name,
+                    'depart'=>$t_name
                    
 
                 );

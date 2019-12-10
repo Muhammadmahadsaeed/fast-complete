@@ -15,7 +15,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 <?php require_once('./connection.php');
-error_reporting(0);
+// error_reporting(0);
 $maill = $_SESSION['email'];
 $uname = $_SESSION['user_name'];
 $dep_err = $teach_err = $mem1_err = $mem2_err = $prtitle_err = $mem1r_err = $mem2r_err = $mail_err = $m1mail_err = $m2mail_err = $pdes_err = "";
@@ -179,7 +179,7 @@ $dep_err = $teach_err = $mem1_err = $mem2_err = $prtitle_err = $mem1r_err = $mem
 
                                             </div>
                                         </div>
-                                        <div class="col-md-4 px-1">
+                                        <div class="col-md-3 px-1">
                                             <div class="form-group">
 
                                                 <select class="form-control" id="teacherDropdown1" name="Optionalteacher">
@@ -336,28 +336,30 @@ $dep_err = $teach_err = $mem1_err = $mem2_err = $prtitle_err = $mem1r_err = $mem
 
     }
 
-    function OptionalTeacher(data) {
-
+    function OptionalTeacher(OptionalData) {
+        console.log(OptionalData)
 
         let teacherDropdown1 = document.getElementById('teacherDropdown1')
 
 
         teacherDropdown1.innerHTML = ''
         //   z.setAttribute("value", "volvocar");
-        for (let key in data) {
+        for (let key1 in OptionalData) {
 
             var y = document.createElement("option");
             // var t = document.createTextNode(data[key].depart);
             // console.log(t)
-            y.innerHTML += data[key].depart
+            y.innerHTML += OptionalData[key1].depart
             teacherDropdown1.appendChild(y);
         }
 
 
     }
+   
     $(document).ready(function() {
         $('#ddlFruits').on('change', function() {
             var ddlFruits = $(this).val();
+            var c = document.getElementById("platypus")
             console.log(ddlFruits)
             $.ajax({
                 type: "GET",
@@ -365,17 +367,15 @@ $dep_err = $teach_err = $mem1_err = $mem2_err = $prtitle_err = $mem1r_err = $mem
                 success: function(data) {
                     var d = JSON.parse(data);
                     myFunction(d)
-                    var c = document.getElementById("platypus")
-                    if (c.checked == true) {
-                        OptionalTeacher(d)
-                    } else {
-
-                    }
-
+                    OptionalTeacher(d)
                 }
             });
 
         })
+   
+
+    
+       
     })
 </script>
 
@@ -386,12 +386,22 @@ if (isset($_POST['submit'])) {
     $batch = date('Y');
     $dept = $_POST['dept'];
     $teacher = $_POST['teacher'];
-    $Optionalteacher = $_POST['Optionalteacher'];
-    $l_name = $_POST['l_name'];
+    
+    if( empty($_POST["Optionalteacher"]) ) { 
+        $Optionalteacher = '';
+     }
+    else { 
+        $Optionalteacher = $_POST["Optionalteacher"];
+     }
+
+
+
+     
+    $l_name = $uname;
     $mem1 = $_POST['mem1'];
     $mem2 = $_POST['mem2'];
     $project_tittle = $_POST['project_tittle'];
-    $l_rollno = $_POST['l_rollno'];
+    $l_rollno = $maill;;
     $mem1_rollno = $_POST['mem1_rollno'];
     $mem2_rollno = $_POST['mem2_rollno'];
     $email = $_POST['email'];
@@ -406,10 +416,13 @@ if (isset($_POST['submit'])) {
     $data1 = mysqli_fetch_assoc($result);
     $teacherId = $data1['t_id'];
 
-    $sql2 = "select t_id from teachers where t_name = '" . $Optionalteacher . "' ";
-    $result2 = mysqli_query($link, $sql2);
-    $data2 = mysqli_fetch_assoc($result2);
-    $OptionalTeacherId = $data2['t_id'];
+    if(!empty($Optionalteacher)){
+        $sql2 = "select t_id from teachers where t_name = '" . $Optionalteacher . "' ";
+        $result2 = mysqli_query($link, $sql2);
+        $data2 = mysqli_fetch_assoc($result2);
+        $OptionalTeacherId = $data2['t_id'];
+    }
+    
 
     $result_set = mysqli_query($link, "select * from proposals where l_rollno = '" . $l_rollno . "'");
     $count = mysqli_num_rows($result_set);
