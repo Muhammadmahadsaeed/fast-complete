@@ -52,12 +52,12 @@ $idd=$_SESSION['user_role_id'];
                     <p>User Profile</p>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="./typography.html">
                     <i class="nc-icon nc-caps-small"></i>
                     <p>Batch</p>
                 </a>
-            </li>
+            </li> -->
             
             <?php
         };

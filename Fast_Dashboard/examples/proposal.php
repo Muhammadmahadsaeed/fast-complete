@@ -159,6 +159,8 @@ $maill=$_SESSION['email'];
                             <form action="" method="post">
                      
                             <input type="button" value="Print All" name="submit_val" onclick="generatePdf()" class="btn btn-primary pull-right" />
+                            <input type="button" value="Print Table Of Content" name="table" onclick="generateTable()" class="btn btn-primary pull-right" />
+                            
                             </form>
                             <?php }; ?>
                             </div>
@@ -355,5 +357,18 @@ console.log(data[x])
    }
     
   }
- 
+ function generateTable(){
+  var e = document.getElementById("filter");
+    let batch = e.options[e.selectedIndex].text;
+     
+     console.log("pdf",batch)
+  
+    if(batch == "All Batch"){
+      swal("Sorry!", "Invalid Batch Selection!", "error");
+    }
+   else{
+        window.location = `./generateTableOfContent.php?batchId=${batch}`
+   }
+    
+ }
 </script>

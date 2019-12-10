@@ -9,7 +9,11 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
   header('location:../login/login.php?lmsg=true');
   
   exit;
-}?>
+}else{
+    $idd=$_SESSION['user_role_id'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,39 +90,41 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
 
 </div> -->
             <div class="content">
+           <?php if($idd !=3){
+            ?>
                 <div class="row">
-               <?php if($result = mysqli_query($link, $selectStudents)){
-                   $rows = mysqli_num_rows($result);
+                    <?php if($result = mysqli_query($link, $selectStudents)){
+                        $rows = mysqli_num_rows($result);
 
-                ?>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-globe text-warning"></i>
+                        ?>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="card card-stats">
+                                    <div class="card-body ">
+                                        <div class="row">
+                                            <div class="col-5 col-md-4">
+                                                <div class="icon-big text-center icon-warning">
+                                                    <i class="nc-icon nc-globe text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-7 col-md-8">
+                                                <div class="numbers">
+
+                                                    <p class="card-category">Students</p>
+                                                    <p class="card-title"><?= $rows ?>
+                                                        <p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-
-                                            <p class="card-category">Students</p>
-                                            <p class="card-title"><?= $rows ?>
-                                                <p>
+                                    <div class="card-footer ">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="fa fa-refresh"></i> 
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-refresh"></i> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               <?php }?>
+                    <?php }?>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
@@ -181,7 +187,7 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <!-- <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-body ">
                             <?php if($result = mysqli_query($link, $selectBatchs)){
@@ -211,9 +217,9 @@ if (!isset($_SESSION['id'], $_SESSION['user_role_id'])) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-
+                            <?php }?>
             </div>
 
         </div>

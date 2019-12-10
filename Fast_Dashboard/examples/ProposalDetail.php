@@ -16,7 +16,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <?php
 require_once('./connection.php');
- 
+$idd=$_SESSION['user_role_id'];
 $p_id = $_GET['id'];
 
 $sql = "SELECT * FROM proposals where p_id  = $p_id";
@@ -38,7 +38,7 @@ $sql = "SELECT * FROM proposals where p_id  = $p_id";
   <link rel='icon' type='image/png' href='../assets/img/favicon.png'>
   <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
   <title>
-    Paper Dashboard 2 by Creative Tim
+   Fast
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
     name='viewport' />
@@ -209,8 +209,10 @@ $sql = "SELECT * FROM proposals where p_id  = $p_id";
             </div>
             <div class="card-footer">
             <form action="" method="post">
+            <?php if($idd != 3){?>
               <input style="background-color:red; margin-left:5%" type="submit" class="btn pull-right" name="reject" value="Reject" />
               <input type="submit" class="btn btn-primary pull-right" name="approve" value="Approve" />
+            <?php }?>
             </form>
              
 
