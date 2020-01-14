@@ -144,8 +144,8 @@ $maill=$_SESSION['email'];
 		if($idd !=3){
             ?>
                             <form action="" method="post">
-                            <input type="button" value="Print Word File" name="submit_val" onclick="generateWord()" class="btn btn-primary pull-right" />
-                            <input type="button" value="Print All" name="submit_val" onclick="generatePdf()" class="btn btn-primary pull-right" />
+                            <input type="button" value="Export to Word" name="submit_val" onclick="generateWord()" class="btn btn-primary pull-right" />
+                            <input type="button" value="Export to PDF" name="submit_val" onclick="generatePdf()" class="btn btn-primary pull-right" />
                             <input type="button" value="Print Table Of Content" name="table" onclick="generateTable()" class="btn btn-primary pull-right" />
                             
                             </form>
