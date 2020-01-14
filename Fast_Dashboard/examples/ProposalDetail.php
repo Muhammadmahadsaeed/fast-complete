@@ -1,18 +1,3 @@
-<!--
-=========================================================
- Paper Dashboard 2 - v2.0.0
-=========================================================
-
- Product Page: https://www.creative-tim.com/product/paper-dashboard-2
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
-
- Coded by Creative Tim
-
-=========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
 
 <?php
 require_once('./connection.php');
@@ -20,11 +5,6 @@ $idd=$_SESSION['user_role_id'];
 $p_id = $_GET['id'];
 
 $sql = "SELECT * FROM proposals where p_id  = $p_id";
-
-
-
-
-  
 
 ?>
 
@@ -268,7 +248,7 @@ $sql = "SELECT * FROM proposals where p_id  = $p_id";
 <?php 
 
 if(isset($_POST['approve'])){
-  echo "================================================================================================";
+  
   $id = $_GET['id']; 
 
 

@@ -1,17 +1,4 @@
-<!--
-=========================================================
- Paper Dashboard 2 - v2.0.0
-=========================================================
 
- Product Page: https://www.creative-tim.com/product/paper-dashboard-2
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
-
- Coded by Creative Tim
-
-=========================================================
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <?php
 require_once('./connection.php');
 
@@ -157,7 +144,7 @@ $maill=$_SESSION['email'];
 		if($idd !=3){
             ?>
                             <form action="" method="post">
-                     
+                            <input type="button" value="Print Word File" name="submit_val" onclick="generateWord()" class="btn btn-primary pull-right" />
                             <input type="button" value="Print All" name="submit_val" onclick="generatePdf()" class="btn btn-primary pull-right" />
                             <input type="button" value="Print Table Of Content" name="table" onclick="generateTable()" class="btn btn-primary pull-right" />
                             
@@ -357,6 +344,21 @@ console.log(data[x])
    }
     
   }
+  function generateWord(){
+   
+   var e = document.getElementById("filter");
+   let batch = e.options[e.selectedIndex].text;
+    
+    console.log("pdf",batch)
+ 
+   if(batch == "All Batch"){
+     swal("Sorry!", "Invalid Batch Selection!", "error");
+   }
+  else{
+       window.location = `./generateWord.php?batchId=${batch}`
+  }
+   
+ }
  function generateTable(){
   var e = document.getElementById("filter");
     let batch = e.options[e.selectedIndex].text;
